@@ -1,0 +1,37 @@
+FROM python:3.11-slim as builder
+
+ARG PYTORCH_VERSION=2.4.0
+ARG TORCHVISION_VERSION=0.19.0
+ARG CUDA_SUFFIX=cpu
+ARG DOWNLOAD_MODEL_ON_BUILD=false
+
+WORKDIR /opt/app
+
+# Системні залежності
+RUN apt-get update && apt-get install -y build-essential git curl && rm -rf /var/lib/apt/lists/*
+
+COPY requirements.txt ./
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY . .
+
+RUN if [ "$DOWNLOAD_MODEL_ON_BUILD" = "true" ]; then \
+    mkdir -p /opt/model && \
+    python -c 'from app.model_loader import завантажити_модель; завантажити_модель()'; \
+    fi
+
+# Runtime image
+FROM python:3.11-slim
+WORKDIR /opt/app
+
+COPY --from=builder /opt/app /opt/app
+COPY --from=builder /opt/model /opt/model
+
+ENV APP_PORT=8080
+EXPOSE 8080
+HEALTHCHECK CMD curl -f http://localhost:$APP_PORT/healthz || exit 1
+
+RUN useradd -m appuser
+USER appuser
+
+ENTRYPOINT ["./entrypoint.sh"]

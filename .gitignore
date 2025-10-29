@@ -1,10 +1,20 @@
-# Byte-compiled / optimized / DLL files
+# Python bytecode
 __pycache__/
 *.py[cod]
 *$py.class
 
 # C extensions
 *.so
+
+# Virtual environments
+.venv/
+env/
+ENV/
+.venv.bak/
+
+# PyInstaller artifacts
+*.manifest
+*.spec
 
 # Distribution / packaging
 .Python
@@ -22,6 +32,7 @@ var/
 *.egg-info/
 .installed.cfg
 *.egg
+MANIFEST
 
 # Installer logs
 pip-log.txt
@@ -39,71 +50,32 @@ coverage.xml
 *.cover
 .hypothesis/
 .pytest_cache/
-test-results/
+.mypy_cache/
 
-# Translations
-*.mo
-*.pot
-
-# Django stuff:
+# Logs
 *.log
-local_settings.py
-db.sqlite3
-
-# Flask stuff:
-instance/
-.webassets-cache
-
-# Scrapy stuff:
-.scrapy
-
-# Sphinx documentation
-docs/_build/
-
-# PyBuilder
-target/
 
 # Jupyter Notebook
 .ipynb_checkpoints
 
-# IPython
-profile_default/
-ipython_config.py
+# pyenv
+.python-version
 
-# PyCharm
-.idea/
-
-# VSCode
-.vscode/
-
-# mypy
-.mypy_cache/
-.dmypy.json
-dmypy.json
-
-# Pyre type checker
-.pyre/
-
-# pytype
-.pytype/
-
-# Environment
+# dotenv
 .env
-.venv
-env/
-venv/
-ENV/
-env.bak/
-venv.bak/
+.env.*
 
-# Docker artifacts
-*.tar
-*.img
-*.container
+# IDEs
+.vscode/
+.idea/
+*.iml
 
-# Model artifacts
+# OS-specific
+.DS_Store
+Thumbs.db
+
+# Artifacts (model weights, outputs)
 artifacts/
 *.pt
-
-# Local secrets
-*.env
+*.onnx
+*.pb

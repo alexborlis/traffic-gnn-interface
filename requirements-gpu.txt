@@ -1,0 +1,18 @@
+fastapi
+uvicorn[standard]
+pydantic>=2
+orjson
+numpy
+scikit-learn
+boto3
+
+# PyTorch with CUDA
+torch==2.4.0+cu121; sys_platform == "linux"
+torchvision==0.19.0+cu121; sys_platform == "linux"
+
+# Torch Geometric stack (версії мають бути сумісними)
+torch-scatter -f https://data.pyg.org/whl/torch-2.4.0+cu121.html
+torch-sparse -f https://data.pyg.org/whl/torch-2.4.0+cu121.html
+torch-cluster -f https://data.pyg.org/whl/torch-2.4.0+cu121.html
+torch-spline-conv -f https://data.pyg.org/whl/torch-2.4.0+cu121.html
+torch-geometric

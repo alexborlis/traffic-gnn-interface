@@ -78,4 +78,4 @@ Thumbs.db
 artifacts/
 *.pt
 *.onnx
-*.pb
+*.pb!*.env.example

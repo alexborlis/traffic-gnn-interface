@@ -1,15 +1,4 @@
-"""
-Модуль, відповідальний за створення екземпляра моделі для інференсу.
-
-На даному етапі:
-- ми завжди створюємо DummyTrafficModel, якщо не вказано інший клас у MODEL_CLASS_PATH;
-- за наявності MODEL_ARTIFACT_URI пробуємо завантажити state_dict з файлу;
-- все налаштовано так, щоб працювало навіть без будь-яких ваг (тільки dummy).
-
-У майбутньому тут можна:
-- реалізувати завантаження з S3/MinIO;
-- розділити логіку для різних типів моделей (GCN, GAT, Transformer тощо).
-"""
+# app/model_loader.py
 
 import importlib
 import os
@@ -21,12 +10,6 @@ from torch import nn
 
 
 def _import_model_class(model_class_path: str) -> type[nn.Module]:
-    """
-    Імпортує клас моделі за повним шляхом "package.module.ClassName".
-
-    :param model_class_path: рядок формату "models.dummy_model.DummyTrafficModel"
-    :return: клас, що наслідує nn.Module
-    """
     module_name, class_name = model_class_path.rsplit(".", 1)
     module = importlib.import_module(module_name)
     model_class = getattr(module, class_name)
@@ -41,27 +24,39 @@ def load_model_instance() -> nn.Module:
 
     Логіка:
     1. Читаємо MODEL_CLASS_PATH з env (або беремо DummyTrafficModel за замовчуванням).
-    2. Створюємо екземпляр класу без аргументів (або можна додати конфіг у майбутньому).
-    3. Якщо задано MODEL_ARTIFACT_URI і файл існує – пробуємо підвантажити state_dict.
+    2. Якщо це TrafficGraphNeuralNetwork – передаємо параметри input_features, hidden_units, output_features.
+       Їх беремо з env (MODEL_INPUT_FEATURES, MODEL_HIDDEN_UNITS, MODEL_OUTPUT_FEATURES) або ставимо дефолти.
+    3. Якщо вказано MODEL_ARTIFACT_URI і файл існує – підвантажуємо state_dict.
     """
-    # 1. Клас моделі
     model_class_path = os.getenv(
         "MODEL_CLASS_PATH",
         "models.dummy_model.DummyTrafficModel",
     )
+
     model_class = _import_model_class(model_class_path)
 
-    # 2. Створення екземпляра моделі (поки без параметрів конфігурації)
-    #    У майбутньому тут можна вчитувати розмірність ознак, кількість шарів тощо.
-    model: nn.Module = model_class()  # type: ignore[call-arg]
+    # --- 2. Створення екземпляра моделі з урахуванням параметрів -----------------
+    if model_class_path.endswith(".TrafficGraphNeuralNetwork"):
+        # Беремо конфіг з env або ставимо дефолти під наш toy-експеримент
+        input_features = int(os.getenv("MODEL_INPUT_FEATURES", "1"))
+        hidden_units = int(os.getenv("MODEL_HIDDEN_UNITS", "16"))
+        output_features = int(os.getenv("MODEL_OUTPUT_FEATURES", "1"))
 
-    # 3. Спроба завантажити ваги з файлу (якщо шлях заданий)
+        model: nn.Module = model_class(  # type: ignore[call-arg]
+            input_features=input_features,
+            hidden_units=hidden_units,
+            output_features=output_features,
+        )
+    else:
+        # Для DummyTrafficModel та інших простих моделей конструктор без аргументів
+        model = model_class()  # type: ignore[call-arg]
+
+    # --- 3. Завантаження ваг за потреби -----------------------------------------
     artifact_uri = os.getenv("MODEL_ARTIFACT_URI")
     if artifact_uri:
         artifact_path = Path(artifact_uri)
         if artifact_path.is_file():
             state: Any = torch.load(artifact_path, map_location="cpu")
-            # Очікуємо, що state - це state_dict
             if isinstance(state, dict):
                 model.load_state_dict(state)
             else:

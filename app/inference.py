@@ -73,5 +73,11 @@ class InferenceEngine:
         with torch.no_grad():
             output: Tensor = self.model(x, edge_tensor)
 
-        # Повертаємо Python-список float-ів
+        # сплющити другий параметр
+        if output.dim() == 2 and output.size(-1) == 1:
+            output = output.squeeze(-1)
+
+        if output.dim() == 2 and output.size(0) == 1:
+            output = output.squeeze(0)
+
         return output.detach().cpu().tolist()

@@ -4,13 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="91ed96f6-a6c2-4c33-a7b6-41c85742d699" name="Changes" comment="commit that makes sense">
-      <change afterPath="$PROJECT_DIR$/.python-version" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/requirements-gpu.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/traffic-gnn-interface.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/traffic-gnn-interface.iml" afterDir="false" />
+    <list default="true" id="91ed96f6-a6c2-4c33-a7b6-41c85742d699" name="Changes" comment="докерабельно">
+      <change afterPath="$PROJECT_DIR$/training/etl_metr_la.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/training/evaluate_metr_la.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/training/metr_la_dataset.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/training/train_metr_la.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/model_loader.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/model_loader.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,6 +26,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="M2-31_audit_structure" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectColorInfo">{
@@ -38,27 +44,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;SHELLCHECK.PATH&quot;: &quot;/Users/alexborlis/Library/Application Support/JetBrains/PyCharm2025.2/plugins/Shell Script/shellcheck&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "SHELLCHECK.PATH": "/Users/alexborlis/Library/Application Support/JetBrains/PyCharm2025.2/plugins/Shell Script/shellcheck",
+    "git-widget-placeholder": "real__etl",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-9c94529fcfe0-JavaScript-PY-252.26199.168" />
-        <option value="bundled-python-sdk-b3d66beaba9a-c6efb3732140-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-252.26199.168" />
+        <option value="bundled-js-predefined-d6986cc7102b-3aa1da707db6-JavaScript-PY-252.27397.106" />
+        <option value="bundled-python-sdk-4e2b1448bda8-9a97661f3031-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-252.27397.106" />
       </set>
     </attachedChunks>
   </component>
@@ -72,6 +78,9 @@
       <workItem from="1759678348274" duration="4247000" />
       <workItem from="1759687228525" duration="5311000" />
       <workItem from="1759822661862" duration="142163000" />
+      <workItem from="1761837400267" duration="192000" />
+      <workItem from="1763265880059" duration="55083000" />
+      <workItem from="1763804130833" duration="102495000" />
     </task>
     <task id="LOCAL-00001" summary="commit that makes sense">
       <option name="closed" value="true" />
@@ -81,7 +90,31 @@
       <option name="project" value="LOCAL" />
       <updated>1759685952210</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="dummy API test">
+      <option name="closed" value="true" />
+      <created>1764174421121</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1764174421121</updated>
+    </task>
+    <task id="LOCAL-00003" summary="fake dataset trained and evaluated">
+      <option name="closed" value="true" />
+      <created>1764181531981</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1764181531981</updated>
+    </task>
+    <task id="LOCAL-00004" summary="докерабельно">
+      <option name="closed" value="true" />
+      <created>1764183850325</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1764183850325</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -89,6 +122,9 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="commit that makes sense" />
-    <option name="LAST_COMMIT_MESSAGE" value="commit that makes sense" />
+    <MESSAGE value="dummy API test" />
+    <MESSAGE value="fake dataset trained and evaluated" />
+    <MESSAGE value="докерабельно" />
+    <option name="LAST_COMMIT_MESSAGE" value="докерабельно" />
   </component>
 </project>

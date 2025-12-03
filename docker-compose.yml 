@@ -13,9 +13,9 @@ services:
       APP_PORT: "8000"
       INFERENCE_DEVICE: "cpu"
 
-      MODEL_CLASS_PATH: "models.traffic_gnn.TrafficGraphNeuralNetwork"
-      MODEL_ARTIFACT_URI: "./models/traffic_gnn_toy.pt"
+      MODEL_CLASS_PATH=models.traffic_gnn.TrafficGraphNeuralNetwork
+      MODEL_ARTIFACT_URI=models/traffic_gnn_metrla.pt
 
       MODEL_INPUT_FEATURES: "1"
-      MODEL_HIDDEN_UNITS: "16"
+      MODEL_HIDDEN_UNITS: "32"
       MODEL_OUTPUT_FEATURES: "1"

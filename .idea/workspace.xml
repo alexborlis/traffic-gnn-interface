@@ -4,13 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="91ed96f6-a6c2-4c33-a7b6-41c85742d699" name="Changes" comment="докерабельно">
-      <change afterPath="$PROJECT_DIR$/training/etl_metr_la.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/training/evaluate_metr_la.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/training/metr_la_dataset.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/training/train_metr_la.py" afterDir="false" />
+    <list default="true" id="91ed96f6-a6c2-4c33-a7b6-41c85742d699" name="Changes" comment="модель на реальних даних">
+      <change afterPath="$PROJECT_DIR$/analysis/plot_metr_la_results.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/analysis/plot_metr_la_results_plotly.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/models/traffic_gnn_transformer.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pipeline/run_metr_la_hybrid_pipeline.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/training/build_metr_la_hybrid_model.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/training/evaluate_metr_la_hybrid.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/training/train_metr_la_hybrid.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/model_loader.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/model_loader.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yml " beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml " afterDir="false" />
       <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -44,27 +47,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "SHELLCHECK.PATH": "/Users/alexborlis/Library/Application Support/JetBrains/PyCharm2025.2/plugins/Shell Script/shellcheck",
-    "git-widget-placeholder": "real__etl",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;SHELLCHECK.PATH&quot;: &quot;/Users/alexborlis/Library/Application Support/JetBrains/PyCharm2025.2/plugins/Shell Script/shellcheck&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;real__etl&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-3aa1da707db6-JavaScript-PY-252.27397.106" />
-        <option value="bundled-python-sdk-4e2b1448bda8-9a97661f3031-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-252.27397.106" />
+        <option value="bundled-js-predefined-d6986cc7102b-a71380e98a7c-JavaScript-PY-252.28238.29" />
+        <option value="bundled-python-sdk-a101402ee41c-968fe969f28a-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-252.28238.29" />
       </set>
     </attachedChunks>
   </component>
@@ -80,7 +83,8 @@
       <workItem from="1759822661862" duration="142163000" />
       <workItem from="1761837400267" duration="192000" />
       <workItem from="1763265880059" duration="55083000" />
-      <workItem from="1763804130833" duration="102495000" />
+      <workItem from="1763804130833" duration="121646000" />
+      <workItem from="1764788113715" duration="1000000" />
     </task>
     <task id="LOCAL-00001" summary="commit that makes sense">
       <option name="closed" value="true" />
@@ -114,7 +118,15 @@
       <option name="project" value="LOCAL" />
       <updated>1764183850325</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="модель на реальних даних">
+      <option name="closed" value="true" />
+      <created>1764706083834</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1764706083834</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -125,6 +137,7 @@
     <MESSAGE value="dummy API test" />
     <MESSAGE value="fake dataset trained and evaluated" />
     <MESSAGE value="докерабельно" />
-    <option name="LAST_COMMIT_MESSAGE" value="докерабельно" />
+    <MESSAGE value="модель на реальних даних" />
+    <option name="LAST_COMMIT_MESSAGE" value="модель на реальних даних" />
   </component>
 </project>

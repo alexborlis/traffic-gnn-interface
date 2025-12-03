@@ -9,7 +9,7 @@
 
 На цьому етапі:
 - ми не використовуємо batching, лише один запит = один граф;
-- edge_index може бути None (для dummy-моделі це ок).
+- edge_index може бути None.
 """
 
 from __future__ import annotations

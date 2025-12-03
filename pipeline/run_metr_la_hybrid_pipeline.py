@@ -1,7 +1,7 @@
 """
 pipeline/run_metr_la_hybrid_pipeline.py
 
-Фінальний сценарій запуску повного експерименту METR-LA HYBRID.
+Фінальний сценарій запуску повного експерименту METR-LA HYBRID. ВИКОРИСТАЄМО В ФІНАЛЬНОМУ ПЕЙПЛАЙНІ!
 
 Послідовність кроків:
   1) Обробка / ETL вихідних даних METR-LA -> data/processed/metr_la.pt
@@ -46,7 +46,7 @@ def run_step(description: str, args: list[str]) -> None:
     """
     Допоміжна функція для запуску окремого кроку пайплайна.
 
-    :param description: Людяний опис кроку (для логів у консолі).
+    :param description: опис кроку (для логів у консолі).
     :param args: Список аргументів командного рядка, який буде передано
                  до subprocess.run, наприклад:
                  [PYTHON_BIN, "-m", "training.etl_metr_la", "--input-csv", ...]
@@ -127,7 +127,7 @@ def main() -> None:
     )
 
     print(
-        "\n🎉 Повний експеримент METR-LA HYBRID завершено.\n"
+        "  \n Повний експеримент METR-LA HYBRID завершено.\n"
         "   - Підготовлені дані: data/processed/metr_la.pt\n"
         "   - Модель: models/traffic_gnn_metrla_hybrid.pt (та *_init.pt)\n"
         "   - Метрики дивись у виводі evaluate-скрипта\n"

@@ -60,9 +60,7 @@ def plot_test_metrics_bar() -> None:
 
     """
 
-    # TODO: замінити ці значення на ті, які видає evaluate_metr_la.py: поки що плот поламаний
-
-    # (нижче — приклад із твоїх логів для базової GNN)
+    # видає evaluate_metr_la.py: поки що плот поламаний
     mae_gnn_test = 12.4110
     rmse_gnn_test = 16.0130
 
@@ -95,7 +93,6 @@ def plot_test_metrics_bar() -> None:
 
 
 def main() -> None:
-    # Переконайся, що директорія figures існує
     import os
 
     os.makedirs("figures", exist_ok=True)

@@ -5,10 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="91ed96f6-a6c2-4c33-a7b6-41c85742d699" name="Changes" comment="з діаграмами">
-      <change beforePath="$PROJECT_DIR$/analysis/plot_metr_la_results.py" beforeDir="false" afterPath="$PROJECT_DIR$/analysis/plot_metr_la_results.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/analysis/plot_metr_la_results_plotly.py" beforeDir="false" afterPath="$PROJECT_DIR$/analysis/plot_metr_la_results_plotly.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/inference.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/inference.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/analysis/plot_metr_la_hybrid_results_plotly.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/analysis/plot_metr_la_hybrid_timeseries_plotly.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pipeline/run_metr_la_hybrid_pipeline.py" beforeDir="false" afterPath="$PROJECT_DIR$/pipeline/run_metr_la_hybrid_pipeline.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/training/build_metr_la_hybrid_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/training/build_metr_la_hybrid_model.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,7 +25,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="M2-31_audit_structure" />
+        <entry key="$PROJECT_DIR$" value="real_etl" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -41,22 +41,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;SHELLCHECK.PATH&quot;: &quot;/Users/alexborlis/Library/Application Support/JetBrains/PyCharm2025.2/plugins/Shell Script/shellcheck&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;real__etl&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "SHELLCHECK.PATH": "/Users/alexborlis/Library/Application Support/JetBrains/PyCharm2025.2/plugins/Shell Script/shellcheck",
+    "git-widget-placeholder": "masters__prod",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -78,7 +78,7 @@
       <workItem from="1761837400267" duration="192000" />
       <workItem from="1763265880059" duration="55083000" />
       <workItem from="1763804130833" duration="121646000" />
-      <workItem from="1764788113715" duration="3898000" />
+      <workItem from="1764788113715" duration="24502000" />
     </task>
     <task id="LOCAL-00001" summary="commit that makes sense">
       <option name="closed" value="true" />
@@ -136,7 +136,15 @@
       <option name="project" value="LOCAL" />
       <updated>1764789905195</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="з діаграмами">
+      <option name="closed" value="true" />
+      <created>1764795226141</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1764795226141</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

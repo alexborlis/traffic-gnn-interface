@@ -1,77 +1,73 @@
+# pipeline/run_metr_la_hybrid_pipeline.py
+
 """
-pipeline/run_metr_la_hybrid_pipeline.py
+Головний скрипт пайплайна METR-LA HYBRID (5 кроків).
 
-Фінальний сценарій запуску повного експерименту METR-LA HYBRID. ВИКОРИСТАЄМО В ФІНАЛЬНОМУ ПЕЙПЛАЙНІ!
+Кроки:
+1) ETL:
+   - читання сирого CSV METR-LA;
+   - нормалізація, формування тензорів X, y, edge_index;
+   - збереження до data/processed/metr_la.pt.
 
-Послідовність кроків:
-  1) Обробка / ETL вихідних даних METR-LA -> data/processed/metr_la.pt
-     (викликає training.etl_metr_la)
+2) BUILD MODEL CONFIG:
+   - формування та збереження JSON-конфігурації гібридної моделі
+     (TrafficGraphNeuralNetworkHybrid) у models/traffic_gnn_metrla_hybrid_config.json.
 
-  2) Формування гібридної моделі:
-     - створення HybridTrafficGraphNeuralNetwork
-     - підрахунок кількості параметрів
-     - збереження початкового стану ваг
-     (викликає training.build_metr_la_hybrid_model)
+3) TRAIN:
+   - запуск training.train_metr_la_hybrid;
+   - навчання моделі та збереження ваг до models/traffic_gnn_metrla_hybrid.pt.
 
-  3) Навчання гібридної моделі на підготовлених даних
-     (викликає training.train_metr_la_hybrid)
+4) EVAL:
+   - запуск training.evaluate_metr_la_hybrid;
+   - підрахунок MSE, MAE, RMSE, MAPE на TEST-спліті, вивід у консоль.
 
-  4) Аналіз якості моделі на TEST-спліті METR-LA
-     (викликає training.evaluate_metr_la_hybrid)
-
-  5) Побудова графіків з результатами експерименту
-     (викликає analysis/plot_metr_la_results_plotly.py)
-
-УВАГА:
-- Скрипт передбачає, що:
-  * запущений з кореня проєкту (де лежать папки training, analysis, data, models),
-  * активоване віртуальне середовище (.venv),
-  * файл data/raw/METR-LA.csv вже завантажений,
-  * всі залежності (torch, torch_geometric, plotly, fastapi тощо) встановлені.
+5) PLOT:
+   - запуск analysis/plot_metr_la_hybrid_results_plotly.py;
+   - повторне оцінювання всередині, парсинг метрик та побудова bar-chart (Plotly).
 """
 
-from pathlib import Path
+from __future__ import annotations
+
 import subprocess
 import sys
+from pathlib import Path
 
 
-# Корінь проєкту (наприклад: /Users/alexborlis/PycharmProjects/traffic-gnn-interface)
-PROJECT_ROOT = Path(__file__).resolve().parents[1]
-
-# Поточний інтерпретатор Python (з активованого .venv)
+# Використовуємо той самий інтерпретатор, з якого запущений скрипт
 PYTHON_BIN = sys.executable
 
 
-def run_step(description: str, args: list[str]) -> None:
+def run_step(title: str, cmd: list[str]) -> None:
     """
-    Допоміжна функція для запуску окремого кроку пайплайна.
+    Допоміжна функція для запуску одного кроку пайплайна.
 
-    :param description: опис кроку (для логів у консолі).
-    :param args: Список аргументів командного рядка, який буде передано
-                 до subprocess.run, наприклад:
-                 [PYTHON_BIN, "-m", "training.etl_metr_la", "--input-csv", ...]
+    :param title: Людиночитна назва кроку (для логів).
+    :param cmd:   Команда (список аргументів), яку треба виконати через subprocess.run.
     """
-    print(f"\n=== {description} ===")
-    print("Команда:", " ".join(str(a) for a in args))
+    print("\n" + "=" * 80)
+    print(f"=== {title} ===")
+    print("Команда:", " ".join(cmd))
+    print("=" * 80)
 
-    # Виконуємо підпроцес у корені проєкту, щоб імпорти працювали коректно
-    result = subprocess.run(args, cwd=PROJECT_ROOT)
-
+    result = subprocess.run(cmd)
     if result.returncode != 0:
-        # Якщо крок впав — зупиняємо весь пайплайн з явною помилкою
         raise SystemExit(
-            f"❌ Крок '{description}' завершився з помилкою (exit code={result.returncode})."
+            f"❌ Крок '{title}' завершився з помилкою (exit code={result.returncode}). "
+            "Перевір логи вище."
         )
 
-    print(f"✅ Крок '{description}' виконано успішно.")
+    print(f"✅ Крок '{title}' виконано успішно.")
 
 
 def main() -> None:
-    """
-    Основна функція, яка послідовно виконує всі 5 кроків.
-    """
+    # Корінь проєкту (.. відносно файлу пайплайна)
+    project_root = Path(__file__).resolve().parent.parent
 
-    # 1) ETL: підготовка даних METR-LA
+    # Шляхи до даних
+    data_raw = project_root / "data" / "raw" / "METR-LA.csv"
+    data_processed = project_root / "data" / "processed" / "metr_la.pt"
+
+    # 1/5: ETL
     run_step(
         "1/5 Підготовка та нормалізація даних METR-LA (ETL)",
         [
@@ -79,17 +75,17 @@ def main() -> None:
             "-m",
             "training.etl_metr_la",
             "--input-csv",
-            "data/raw/METR-LA.csv",
+            str(data_raw),
             "--output-pt",
-            "data/processed/metr_la.pt",
+            str(data_processed),
             "--horizon",
-            "12",  # той самий горизонт, який ти вже використовував
+            "12",
         ],
     )
 
-    # 2) Формування моделі (структура + початковий стан)
+    # 2/5: BUILD MODEL CONFIG
     run_step(
-        "2/5 Формування гібридної моделі (GNN + Transformer) для METR-LA",
+        "2/5 Формування конфігурації гібридної моделі (GNN + Transformer)",
         [
             PYTHON_BIN,
             "-m",
@@ -97,7 +93,7 @@ def main() -> None:
         ],
     )
 
-    # 3) Навчання моделі
+    # 3/5: TRAIN
     run_step(
         "3/5 Навчання гібридної моделі на METR-LA",
         [
@@ -107,9 +103,9 @@ def main() -> None:
         ],
     )
 
-    # 4) Аналіз якості (evaluation)
+    # 4/5: EVAL
     run_step(
-        "4/5 Аналіз якості гібридної моделі на TEST-спліті METR-LA",
+        "4/5 Оцінювання якості гібридної моделі на тестовому наборі",
         [
             PYTHON_BIN,
             "-m",
@@ -117,22 +113,16 @@ def main() -> None:
         ],
     )
 
-    # 5) Побудова графіків (Plotly)
+    # 5/5: PLOT
     run_step(
-        "5/5 Побудова графіків результатів (Plotly)",
+        "5/5 Побудова графіків метрик (Plotly)",
         [
             PYTHON_BIN,
-            "analysis/plot_metr_la_results_plotly.py",
+            "analysis/plot_metr_la_hybrid_results_plotly.py",
         ],
     )
 
-    print(
-        "  \n Повний експеримент METR-LA HYBRID завершено.\n"
-        "   - Підготовлені дані: data/processed/metr_la.pt\n"
-        "   - Модель: models/traffic_gnn_metrla_hybrid.pt (та *_init.pt)\n"
-        "   - Метрики дивись у виводі evaluate-скрипта\n"
-        "   - Графіки: analysis/figures/*.html (відкривай у браузері)\n"
-    )
+    print("\n🎉 Усі 5 кроків пайплайна METR-LA HYBRID виконано успішно.")
 
 
 if __name__ == "__main__":

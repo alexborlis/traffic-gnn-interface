@@ -1,80 +1,53 @@
+# training/build_metr_la_hybrid_model.py
+
 """
-training/build_metr_la_hybrid_model.py
+Скрипт 2/5: формування конфігурації гібридної моделі GNN + Transformer для METR-LA.
 
-Допоміжний скрипт для формування гібридної моделі
-HybridTrafficGraphNeuralNetwork для задачі METR-LA.
+Ідея:
+- Ми не створюємо сам PyTorch-модуль (це робить train-скрипт).
+- Тут ми фіксуємо архітектуру та гіперпараметри в окремому JSON-файлі,
+  щоб:
+  * мати "артефакт" для диплому (можна вставити в текст/додаток);
+  * у майбутньому, за бажання, читати цю конфігурацію з сервісного коду.
 
-Його задача:
-  1) Створити модель з фіксованими гіперпараметрами.
-  2) Порахувати кількість параметрів.
-  3) Зберегти початковий (ненавчений) стан моделі на диск
-     — для репродуктивності та документування експерименту.
+ВАЖЛИВО:
+Параметри мають узгоджуватися з тим, що використовується у training.train_metr_la_hybrid.
 """
 
+from __future__ import annotations
+
+import json
 from pathlib import Path
-
-import torch
-
-from models.traffic_gnn import HybridTrafficGraphNeuralNetwork
-
-
-def build_hybrid_model() -> HybridTrafficGraphNeuralNetwork:
-    """
-    Створює екземпляр гібридної моделі з фіксованими гіперпараметрами.
-
-    УВАГА:
-    - Назви параметрів і значення повинні бути узгоджені з тими,
-      що використовуються у скрипті training.train_metr_la_hybrid.
-    - Якщо ти там змінюватимеш розмірність/шари — ОБОВʼЯЗКОВО
-      онови ці значення тут, щоб опис моделі в дипломі був консистентним.
-    """
-
-    # TODO: якщо у training.train_metr_la_hybrid використовується інший
-    # набір гіперпараметрів — підстав сюди ті ж значення.
-    model = HybridTrafficGraphNeuralNetwork(
-        input_features=1,          # для METR-LA ми використовуємо 1 ознаку (швидкість)
-        hidden_units=64,          # розмір прихованого шару GNN/MLP
-        output_features=1,        # прогнозована величина (швидкість)
-        num_transformer_layers=2, # кількість шарів Transformer
-        num_heads=4,              # кількість голів у multi-head attention
-        dropout=0.1,              # ймовірність dropout
-    )
-
-    return model
 
 
 def main() -> None:
-    """
-    Точка входу для CLI-режиму.
-
-    Робить наступне:
-      1. Створює модель.
-      2. Виводить коротку інформацію про модель:
-         - кількість параметрів,
-         - пристрій (CPU/GPU).
-      3. Зберігає початковий стан моделі до файлу
-         models/traffic_gnn_metrla_hybrid_init.pt
-    """
-    device = torch.device("cpu")  # На цьому етапі нам достатньо CPU
-    model = build_hybrid_model().to(device)
-
-    # Рахуємо кількість параметрів
-    total_params = sum(p.numel() for p in model.parameters())
-    trainable_params = sum(p.numel() for p in model.parameters() if p.requires_grad)
-
-    # Готуємо директорію для збереження ваг
+    # Каталог для моделей (гарантуємо, що існує)
     models_dir = Path("models")
     models_dir.mkdir(parents=True, exist_ok=True)
 
-    # Файл з початковим станом моделі
-    init_weights_path = models_dir / "traffic_gnn_metrla_hybrid_init.pt"
-    torch.save(model.state_dict(), init_weights_path)
+    # Шлях до конфіг-файлу моделі
+    config_path = models_dir / "traffic_gnn_metrla_hybrid_config.json"
 
-    print("\n[BUILD MODEL] HybridTrafficGraphNeuralNetwork для METR-LA створено.")
-    print(f"[BUILD MODEL] Пристрій: {device}")
-    print(f"[BUILD MODEL] Загальна кількість параметрів:   {total_params}")
-    print(f"[BUILD MODEL] Тренованих параметрів:            {trainable_params}")
-    print(f"[BUILD MODEL] Початкові (ненавчені) ваги збережено до: {init_weights_path}\n")
+    # Базова конфігурація гібридної моделі.
+    # ЦІ ЗНАЧЕННЯ ПОВИННІ ВІДПОВІДАТИ training.train_metr_la_hybrid
+    config = {
+        "model_name": "TrafficGraphNeuralNetworkHybrid",  # умовна назва архітектури
+        "input_features": 1,          # одна ознака: швидкість/потік для сенсора
+        "hidden_units": 64,           # розмір прихованого простору GNN/MLP
+        "output_features": 1,         # прогнозуємо 1 значення на вузол
+        "num_transformer_layers": 2,  # кількість шарів Transformer-частини
+        "num_heads": 4,               # кількість attention heads
+        "dropout": 0.1,               # дропаут у прихованих шарах
+        "horizon": 12,                # горизонт прогнозу H (як у etl_metr_la)
+        "num_nodes": 207,             # кількість сенсорів у METR-LA
+    }
+
+    # Записуємо конфіг у JSON, з відступами для зручного читання
+    config_path.write_text(json.dumps(config, indent=2), encoding="utf-8")
+
+    print(
+        f"[BUILD METR-LA HYBRID MODEL] Конфігурацію моделі збережено до {config_path}"
+    )
 
 
 if __name__ == "__main__":

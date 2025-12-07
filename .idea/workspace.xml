@@ -5,10 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="91ed96f6-a6c2-4c33-a7b6-41c85742d699" name="Changes" comment="з діаграмами">
-      <change afterPath="$PROJECT_DIR$/analysis/plot_metr_la_hybrid_results_plotly.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/analysis/plot_metr_la_hybrid_timeseries_plotly.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pipeline/run_metr_la_hybrid_pipeline.py" beforeDir="false" afterPath="$PROJECT_DIR$/pipeline/run_metr_la_hybrid_pipeline.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/training/build_metr_la_hybrid_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/training/build_metr_la_hybrid_model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/analysis/plot_metr_la_hybrid_timeseries_plotly.py" beforeDir="false" afterPath="$PROJECT_DIR$/analysis/plot_metr_la_hybrid_timeseries_plotly.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/traffic_gnn.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/traffic_gnn.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/training/evaluate_toy.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/training/toy_dataset.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/training/train_toy.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,7 +79,7 @@
       <workItem from="1761837400267" duration="192000" />
       <workItem from="1763265880059" duration="55083000" />
       <workItem from="1763804130833" duration="121646000" />
-      <workItem from="1764788113715" duration="24502000" />
+      <workItem from="1764788113715" duration="42234000" />
     </task>
     <task id="LOCAL-00001" summary="commit that makes sense">
       <option name="closed" value="true" />
@@ -144,7 +145,15 @@
       <option name="project" value="LOCAL" />
       <updated>1764795226141</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="з діаграмами">
+      <option name="closed" value="true" />
+      <created>1764954382654</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1764954382654</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

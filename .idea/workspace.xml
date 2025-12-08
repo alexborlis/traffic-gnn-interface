@@ -6,8 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="91ed96f6-a6c2-4c33-a7b6-41c85742d699" name="Changes" comment="з діаграмами">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/training/etl_metr_la.py" beforeDir="false" afterPath="$PROJECT_DIR$/training/etl_metr_la.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/analysis/plot_metr_la_hybrid_timeseries_plotly.py" beforeDir="false" afterPath="$PROJECT_DIR$/analysis/plot_metr_la_hybrid_timeseries_plotly.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/analysis/plots/metr_la_hybrid_sensor0_abs_error_hist.html" beforeDir="false" afterPath="$PROJECT_DIR$/analysis/plots/metr_la_hybrid_sensor0_abs_error_hist.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/analysis/plots/metr_la_hybrid_sensor0_scatter.html" beforeDir="false" afterPath="$PROJECT_DIR$/analysis/plots/metr_la_hybrid_sensor0_scatter.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/analysis/plots/metr_la_hybrid_sensor0_timeseries.html" beforeDir="false" afterPath="$PROJECT_DIR$/analysis/plots/metr_la_hybrid_sensor0_timeseries.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,7 +83,7 @@
       <workItem from="1765119279888" duration="138000" />
       <workItem from="1765119439734" duration="15000" />
       <workItem from="1765119458303" duration="87000" />
-      <workItem from="1765119571507" duration="15222000" />
+      <workItem from="1765119571507" duration="30313000" />
     </task>
     <task id="LOCAL-00001" summary="commit that makes sense">
       <option name="closed" value="true" />
@@ -163,7 +165,15 @@
       <option name="project" value="LOCAL" />
       <updated>1765122941614</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="з діаграмами">
+      <option name="closed" value="true" />
+      <created>1765188194767</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1765188194767</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

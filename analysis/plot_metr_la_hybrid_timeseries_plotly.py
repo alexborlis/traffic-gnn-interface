@@ -279,8 +279,8 @@ def build_timeseries_for_sensor(
             y_true_val = float(y_t[sensor_index])
 
             # Денормалізація назад до км/год по сенсору
-            y_true_denorm.append(y_true_val * std_sensor + mean_sensor)
-            y_pred_denorm.append(float(pred_t[sensor_index]) * std_sensor + mean_sensor)
+            y_true_denorm.append(y_true_val)  # вже км/год
+            y_pred_denorm.append(float(pred_t[sensor_index]))  # теж км/год
 
             ts = timestamps[t]
             times_str.append(str(ts))

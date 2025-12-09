@@ -1,0 +1,8 @@
+{
+  "dataset": "METR-LA",
+  "model_type": "HybridTrafficGNNTransformer",
+  "loss_mse": 286.9629337077556,
+  "mae": 11.110162071080238,
+  "rmse": 14.372403756242834,
+  "mape": 319008387.6455819
+}

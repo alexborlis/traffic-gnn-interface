@@ -1,0 +1,8 @@
+{
+  "dataset": "METR-LA",
+  "model_type": "TrafficGraphNeuralNetwork",
+  "loss_mse": 325.6964316057077,
+  "mae": 12.617454548430377,
+  "rmse": 15.95025803568623,
+  "mape": 346001630.7707216
+}

@@ -13,8 +13,9 @@
 Результат:
 - Вивід у консоль підсумкових метрик (MSE, MAE, RMSE, MAPE) на TEST-спліті.
 """
-
 from __future__ import annotations
+
+import json
 
 from pathlib import Path
 from typing import Tuple
@@ -133,6 +134,18 @@ def main() -> None:
     print(f"MAPE:       {test_mape:.2f} %")
     print("=========================================================")
 
+    metrics = {
+        "dataset": "METR-LA",
+        "model_type": "HybridTrafficGNNTransformer",
+        "loss_mse": float(test_loss),
+        "mae": float(test_mae),
+        "rmse": float(test_rmse),
+        "mape": float(test_mape),
+    }
+
+    metrics_path = model_path.parent / "metrics_metrla_hybrid.json"
+    metrics_path.write_text(json.dumps(metrics, indent=2, ensure_ascii=False))
+    print(f"[EVAL METR-LA HYBRID] Метрики збережено до {metrics_path}")
 
 if __name__ == "__main__":
     main()

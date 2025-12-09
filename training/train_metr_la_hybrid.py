@@ -10,8 +10,9 @@
 
 Сценарій аналогічний train_metr_la.py, але модель — інша.
 """
-
 from __future__ import annotations
+
+import json
 
 from pathlib import Path
 from typing import Tuple
@@ -183,6 +184,18 @@ def main() -> None:
     # === 3. Цикл навчання по епохах ==========================================
     best_val_loss = float("inf")
 
+    history = {
+        "epoch": [],
+        "train_loss": [],
+        "train_mae": [],
+        "train_rmse": [],
+        "train_mape": [],
+        "val_loss": [],
+        "val_mae": [],
+        "val_rmse": [],
+        "val_mape": [],
+    }
+
     for epoch in range(1, num_epochs + 1):
         print(f"\n[TRAIN METR-LA HYBRID] Epoch {epoch:03d}/{num_epochs}")
 
@@ -204,6 +217,16 @@ def main() -> None:
             f"RMSE={val_rmse:.4f}, MAPE={val_mape:.2f}%"
         )
 
+        history["epoch"].append(epoch)
+        history["train_loss"].append(float(train_loss))
+        history["train_mae"].append(float(train_mae))
+        history["train_rmse"].append(float(train_rmse))
+        history["train_mape"].append(float(train_mape))
+        history["val_loss"].append(float(val_loss))
+        history["val_mae"].append(float(val_mae))
+        history["val_rmse"].append(float(val_rmse))
+        history["val_mape"].append(float(val_mape))
+
         if val_loss < best_val_loss:
             best_val_loss = val_loss
             torch.save(model.state_dict(), model_output_path)
@@ -211,6 +234,10 @@ def main() -> None:
                 f"[TRAIN METR-LA HYBRID] Краща модель оновлена, "
                 f"збережено до {model_output_path}"
             )
+
+    history_path = model_output_path.parent / "training_log_metrla_hybrid.json"
+    history_path.write_text(json.dumps(history, indent=2, ensure_ascii=False))
+    print(f"[TRAIN METR-LA HYBRID] Історію навчання збережено до {history_path}")
 
     print("\n[TRAIN METR-LA HYBRID] Навчання завершено.")
     print(f"[TRAIN METR-LA HYBRID] Найкращий val loss: {best_val_loss:.4f}")

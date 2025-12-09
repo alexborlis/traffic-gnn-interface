@@ -11,8 +11,9 @@
 Результат:
 - Вивід у консоль кінцевих метрик (MAE, RMSE, MAPE) на test-спліті.
 """
-
 from __future__ import annotations
+
+import json
 
 from pathlib import Path
 from typing import Tuple
@@ -121,6 +122,19 @@ def main() -> None:
     print(f"MAPE:       {test_mape:.2f} %")
     print("===============================================")
 
+    # Збереження метрик до JSON-файлу для подальшого аналізу
+    metrics = {
+        "dataset": "METR-LA",
+        "model_type": "TrafficGraphNeuralNetwork",
+        "loss_mse": float(test_loss),
+        "mae": float(test_mae),
+        "rmse": float(test_rmse),
+        "mape": float(test_mape),
+    }
+
+    metrics_path = model_path.parent / "metrics_metrla_baseline.json"
+    metrics_path.write_text(json.dumps(metrics, indent=2, ensure_ascii=False))
+    print(f"[EVAL METR-LA] Метрики збережено до {metrics_path}")
 
 if __name__ == "__main__":
     main()

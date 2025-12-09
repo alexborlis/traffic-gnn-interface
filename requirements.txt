@@ -1,15 +1,50 @@
-fastapi==0.115.5          # Основний веб-фреймворк для створення REST API сервісу інференсу моделі
-uvicorn[standard]==0.32.0 # ASGI-сервер для запуску FastAPI; забезпечує асинхронну обробку запитів
-pydantic==2.9.2           # Валідація та типізація даних у FastAPI; моделі для вхідних/вихідних DTO
-python-dotenv==1.0.1      # Завантаження конфігурацій/секретів з .env-файлів у середовище виконання
-
-torch==2.8.0              # PyTorch: фреймворк для роботи з GNN/Transformer моделями та інференсу на CPU/GPU
-numpy==1.26.4             # Базові числові обчислення, векторизація, підтримка тензорних операцій
-
-boto3==1.35.20            # AWS SDK для Python: завантаження/збереження моделей у S3, доступ до AWS-сервісів
-
-pytest==8.3.3             # Фреймворк для написання модульних та інтеграційних тестів
-
-pandas==2.2.3             # Аналіз даних, робота з таблицями, передобробка вибірок, завантаження датасетів
-
-plotly>=5                 # Побудова інфографіки та інтерактивних графіків для аналізу результатів моделі
+annotated-types==0.7.0
+anyio==4.12.0
+boto3==1.35.20
+botocore==1.35.99
+click==8.3.1
+contourpy==1.3.3
+cycler==0.12.1
+fastapi==0.115.5
+filelock==3.20.0
+fonttools==4.61.0
+fsspec==2025.10.0
+h11==0.16.0
+httptools==0.7.1
+idna==3.11
+iniconfig==2.3.0
+Jinja2==3.1.6
+jmespath==1.0.1
+kiwisolver==1.4.9
+MarkupSafe==3.0.3
+matplotlib==3.10.7
+mpmath==1.3.0
+narwhals==2.13.0
+networkx==3.6
+numpy==1.26.4
+packaging==25.0
+pandas==2.2.3
+pillow==12.0.0
+plotly==6.5.0
+pluggy==1.6.0
+pydantic==2.9.2
+pydantic_core==2.23.4
+pyparsing==3.2.5
+pytest==8.3.3
+python-dateutil==2.9.0.post0
+python-dotenv==1.0.1
+pytz==2025.2
+PyYAML==6.0.3
+s3transfer==0.10.4
+setuptools==80.9.0
+six==1.17.0
+starlette==0.41.3
+sympy==1.14.0
+torch==2.8.0
+typing_extensions==4.15.0
+tzdata==2025.2
+urllib3==2.5.0
+uvicorn==0.32.0
+uvloop==0.22.1
+watchfiles==1.1.1
+websockets==15.0.1

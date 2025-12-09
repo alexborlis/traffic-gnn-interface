@@ -4,12 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="91ed96f6-a6c2-4c33-a7b6-41c85742d699" name="Changes" comment="помилка з подвійною денормалізацією що веде до графіку з абсурдною швидкістю">
+    <list default="true" id="91ed96f6-a6c2-4c33-a7b6-41c85742d699" name="Changes" comment="зміна легенди графіка">
+      <change afterPath="$PROJECT_DIR$/analysis/plot_training_curves.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/analysis/plot_metr_la_hybrid_timeseries_plotly.py" beforeDir="false" afterPath="$PROJECT_DIR$/analysis/plot_metr_la_hybrid_timeseries_plotly.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/analysis/plots/metr_la_hybrid_sensor0_abs_error_hist.html" beforeDir="false" afterPath="$PROJECT_DIR$/analysis/plots/metr_la_hybrid_sensor0_abs_error_hist.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/analysis/plots/metr_la_hybrid_sensor0_scatter.html" beforeDir="false" afterPath="$PROJECT_DIR$/analysis/plots/metr_la_hybrid_sensor0_scatter.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/analysis/plots/metr_la_hybrid_sensor0_timeseries.html" beforeDir="false" afterPath="$PROJECT_DIR$/analysis/plots/metr_la_hybrid_sensor0_timeseries.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/training/evaluate_metr_la.py" beforeDir="false" afterPath="$PROJECT_DIR$/training/evaluate_metr_la.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/training/evaluate_metr_la_hybrid.py" beforeDir="false" afterPath="$PROJECT_DIR$/training/evaluate_metr_la_hybrid.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/training/train_metr_la.py" beforeDir="false" afterPath="$PROJECT_DIR$/training/train_metr_la.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/training/train_metr_la_hybrid.py" beforeDir="false" afterPath="$PROJECT_DIR$/training/train_metr_la_hybrid.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,7 +85,7 @@
       <workItem from="1765119279888" duration="138000" />
       <workItem from="1765119439734" duration="15000" />
       <workItem from="1765119458303" duration="87000" />
-      <workItem from="1765119571507" duration="45540000" />
+      <workItem from="1765119571507" duration="48727000" />
     </task>
     <task id="LOCAL-00001" summary="commit that makes sense">
       <option name="closed" value="true" />
@@ -181,7 +183,15 @@
       <option name="project" value="LOCAL" />
       <updated>1765229180945</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="зміна легенди графіка">
+      <option name="closed" value="true" />
+      <created>1765304848780</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1765304848780</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -195,6 +205,7 @@
     <MESSAGE value="модель на реальних даних" />
     <MESSAGE value="з діаграмами" />
     <MESSAGE value="помилка з подвійною денормалізацією що веде до графіку з абсурдною швидкістю" />
-    <option name="LAST_COMMIT_MESSAGE" value="помилка з подвійною денормалізацією що веде до графіку з абсурдною швидкістю" />
+    <MESSAGE value="зміна легенди графіка" />
+    <option name="LAST_COMMIT_MESSAGE" value="зміна легенди графіка" />
   </component>
 </project>

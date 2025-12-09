@@ -4,14 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="91ed96f6-a6c2-4c33-a7b6-41c85742d699" name="Changes" comment="зміна легенди графіка">
-      <change afterPath="$PROJECT_DIR$/analysis/plot_training_curves.py" afterDir="false" />
+    <list default="true" id="91ed96f6-a6c2-4c33-a7b6-41c85742d699" name="Changes" comment="метрики">
+      <change afterPath="$PROJECT_DIR$/test_keys.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/send_sample_request.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/training/evaluate_metr_la.py" beforeDir="false" afterPath="$PROJECT_DIR$/training/evaluate_metr_la.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/training/evaluate_metr_la_hybrid.py" beforeDir="false" afterPath="$PROJECT_DIR$/training/evaluate_metr_la_hybrid.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/training/train_metr_la.py" beforeDir="false" afterPath="$PROJECT_DIR$/training/train_metr_la.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/training/train_metr_la_hybrid.py" beforeDir="false" afterPath="$PROJECT_DIR$/training/train_metr_la_hybrid.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,7 +82,7 @@
       <workItem from="1765119279888" duration="138000" />
       <workItem from="1765119439734" duration="15000" />
       <workItem from="1765119458303" duration="87000" />
-      <workItem from="1765119571507" duration="48727000" />
+      <workItem from="1765119571507" duration="51368000" />
     </task>
     <task id="LOCAL-00001" summary="commit that makes sense">
       <option name="closed" value="true" />
@@ -191,7 +188,23 @@
       <option name="project" value="LOCAL" />
       <updated>1765304848780</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="метрики">
+      <option name="closed" value="true" />
+      <created>1765308038797</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1765308038797</updated>
+    </task>
+    <task id="LOCAL-00015" summary="метрики">
+      <option name="closed" value="true" />
+      <created>1765308175390</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1765308175390</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -206,6 +219,7 @@
     <MESSAGE value="з діаграмами" />
     <MESSAGE value="помилка з подвійною денормалізацією що веде до графіку з абсурдною швидкістю" />
     <MESSAGE value="зміна легенди графіка" />
-    <option name="LAST_COMMIT_MESSAGE" value="зміна легенди графіка" />
+    <MESSAGE value="метрики" />
+    <option name="LAST_COMMIT_MESSAGE" value="метрики" />
   </component>
 </project>

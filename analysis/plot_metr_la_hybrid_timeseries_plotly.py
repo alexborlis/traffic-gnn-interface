@@ -229,14 +229,13 @@ def _get_scalar_for_sensor(value, sensor_index: int) -> float:
 def build_timeseries_for_sensor(
     sensor_index: int = 0,
     max_points: int = 288,  # ~2 дні при інтервалі 5 хв
-) -> Tuple[List[str], List[float], List[float]]:
+) -> Tuple[List[int], List[float], List[float]]:
     device = torch.device("cpu")
 
     payload = load_payload()
     X = payload["X"]  # [T_eff, N, 1]
     y = payload["y"]  # [T_eff, N]
     edge_index = payload["edge_index"].long().to(device)
-    timestamps = payload["timestamps"]  # список строк / таймстемпів
     train_ratio = float(payload["train_ratio"])
     val_ratio = float(payload["val_ratio"])
 
@@ -262,12 +261,13 @@ def build_timeseries_for_sensor(
 
     model = load_model(device)
 
-    times_str: List[str] = []
+    # Використовуємо індекс часу для timestamp-дат,
+    time_indices: List[int] = []
     y_true_denorm: List[float] = []
     y_pred_denorm: List[float] = []
 
     with torch.no_grad():
-        for t in indices:
+        for local_idx, t in enumerate(indices):
             x_t = X[t].to(device)  # [N, 1]
             y_t = y[t]  # [N]
 
@@ -278,14 +278,14 @@ def build_timeseries_for_sensor(
 
             y_true_val = float(y_t[sensor_index])
 
-            # Денормалізація назад до км/год по сенсору
-            y_true_denorm.append(y_true_val)  # вже км/год
-            y_pred_denorm.append(float(pred_t[sensor_index]))  # теж км/год
+            # Значення вже в км/год, додаткова "денормалізація" не потрібна
+            y_true_denorm.append(y_true_val)
+            y_pred_denorm.append(float(pred_t[sensor_index]))
 
-            ts = timestamps[t]
-            times_str.append(str(ts))
+            # Індекс часу в межах тестового відрізку: 0, 1, 2, ...
+            time_indices.append(local_idx)
 
-    return times_str, y_true_denorm, y_pred_denorm
+    return time_indices, y_true_denorm, y_pred_denorm
 
 
 # ----------------- Побудова графіків (Plotly) -----------------
@@ -313,7 +313,7 @@ def plot_timeseries(x, y_true, y_pred, sensor_name: str):
 
     fig.update_layout(
         title=f"METR-LA HYBRID — часовий ряд для сенсора {sensor_name}",
-        xaxis_title="Час",
+        xaxis_title="Індекс часу (5-хв інтервали)",
         yaxis_title="Швидкість, км/год",
         legend=dict(x=0.01, y=0.99),
     )

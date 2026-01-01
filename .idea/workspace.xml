@@ -4,16 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="91ed96f6-a6c2-4c33-a7b6-41c85742d699" name="Changes" comment="метрики">
-      <change afterPath="$PROJECT_DIR$/test_keys.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/send_sample_request.py" afterDir="false" />
+    <list default="true" id="91ed96f6-a6c2-4c33-a7b6-41c85742d699" name="Changes" comment="моніторинг">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/training_log_metrla_baseline.json" beforeDir="false" afterPath="$PROJECT_DIR$/models/training_log_metrla_baseline.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/send_sample_request.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/send_sample_request.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="EmbeddingIndexingInfo">
+    <option name="cachedIndexableFilesCount" value="67" />
+    <option name="fileBasedEmbeddingIndicesEnabled" value="true" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -30,6 +33,10 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="McpProjectServerCommands">
+    <commands />
+    <urls />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 1
 }</component>
@@ -41,27 +48,30 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;SHELLCHECK.PATH&quot;: &quot;/Users/alexborlis/Library/Application Support/JetBrains/PyCharm2025.2/plugins/Shell Script/shellcheck&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;masters__prod&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.MCP Project settings loaded": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "SHELLCHECK.PATH": "/Users/alexborlis/Library/Application Support/JetBrains/PyCharm2025.2/plugins/Shell Script/shellcheck",
+    "ai.playground.ignore.import.keys.banner.in.settings": "true",
+    "git-widget-placeholder": "masters__prod",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-3aa1da707db6-JavaScript-PY-252.27397.106" />
-        <option value="bundled-python-sdk-4e2b1448bda8-9a97661f3031-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-252.27397.106" />
+        <option value="bundled-js-predefined-d6986cc7102b-9b0f141eb926-JavaScript-PY-253.29346.142" />
+        <option value="bundled-python-sdk-f2b7a9f6281b-6e1f45a539f7-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-253.29346.142" />
       </set>
     </attachedChunks>
   </component>
@@ -82,7 +92,9 @@
       <workItem from="1765119279888" duration="138000" />
       <workItem from="1765119439734" duration="15000" />
       <workItem from="1765119458303" duration="87000" />
-      <workItem from="1765119571507" duration="51368000" />
+      <workItem from="1765119571507" duration="94673000" />
+      <workItem from="1765910528205" duration="5739000" />
+      <workItem from="1766585283720" duration="51965000" />
     </task>
     <task id="LOCAL-00001" summary="commit that makes sense">
       <option name="closed" value="true" />
@@ -204,7 +216,15 @@
       <option name="project" value="LOCAL" />
       <updated>1765308175390</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="моніторинг">
+      <option name="closed" value="true" />
+      <created>1765311282127</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1765311282127</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -220,6 +240,7 @@
     <MESSAGE value="помилка з подвійною денормалізацією що веде до графіку з абсурдною швидкістю" />
     <MESSAGE value="зміна легенди графіка" />
     <MESSAGE value="метрики" />
-    <option name="LAST_COMMIT_MESSAGE" value="метрики" />
+    <MESSAGE value="моніторинг" />
+    <option name="LAST_COMMIT_MESSAGE" value="моніторинг" />
   </component>
 </project>

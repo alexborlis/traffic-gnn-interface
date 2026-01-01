@@ -36,6 +36,9 @@ def main() -> None:
     resp = requests.post(f"{BASE_URL}/predict", json=payload, timeout=30)
 
     print("Status:", resp.status_code)
+    print("len(predictions):", len(resp.json()["predictions"]))
+    print("len(node_features):", len(node_features))
+
     try:
         print("Body (parsed):", json.dumps(resp.json(), indent=2, ensure_ascii=False))
     except Exception:

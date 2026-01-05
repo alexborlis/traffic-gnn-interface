@@ -1,0 +1,21 @@
+version: "3.9"
+
+services:
+  api:
+    build: .
+    container_name: traffic-gnn-api
+    ports:
+      # Зовнішній порт : Внутрішній порт контейнера
+      - "8000:8000"
+    environment:
+      # Бойові значення за замовчуванням, які можна підправити
+      APP_ENV: "prod"
+      APP_PORT: "8000"
+      INFERENCE_DEVICE: "cpu"
+
+      MODEL_CLASS_PATH=models.traffic_gnn.TrafficGraphNeuralNetwork
+      MODEL_ARTIFACT_URI=models/traffic_gnn_metrla.pt
+
+      MODEL_INPUT_FEATURES: "1"
+      MODEL_HIDDEN_UNITS: "32"
+      MODEL_OUTPUT_FEATURES: "1"

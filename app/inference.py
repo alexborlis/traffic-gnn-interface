@@ -1,41 +1,83 @@
-import time
+"""
+Модуль для інференсу (InferenceEngine).
+
+Інкапсулює:
+- модель (torch.nn.Module),
+- пристрій виконання (cpu / cuda),
+- перетворення сирих вхідних даних з API у тензори,
+- виконання model.forward(...) з вимкненими градієнтами.
+
+На цьому етапі:
+- ми не використовуємо batching, лише один запит = один граф;
+- edge_index може бути None.
+"""
+
+from __future__ import annotations
+
+from typing import Iterable, List, Optional
+
 import torch
-import numpy as np
-from app.schemas import PredictionRequest
+from torch import nn
+from torch import Tensor
+
 
 class InferenceEngine:
     """
-    Обгортка для інференсу GNN-моделі.
-    Містить методи: warmup, predict
+    Клас, який інкапсулює модель та логіку передбачення.
+
+    Приклад використання:
+        engine = InferenceEngine(model, device="cpu")
+        predictions = engine.predict(node_features=[[1.0], [2.0]], edge_index=None)
     """
 
-    def __init__(self, model: torch.nn.Module):
-        self.model = model
-        self.device = next(model.parameters()).device
-        self.model_version = "unknown"  # Опційно можна підтягнути версію з S3 або ENV
-
-    def warmup(self) -> None:
+    def __init__(self, model: nn.Module, device: str = "cpu") -> None:
         """
-        Попередній запуск з фіктивними даними для прискорення Cold Start
+        :param model: torch-модель, що наслідує nn.Module
+        :param device: 'cpu' або 'cuda' (якщо доступно)
         """
-        dummy_input = PredictionRequest(
-            edge_index=[[0, 1], [1, 2]],
-            node_features=[[0.0] * 16] * 3
-        )
-        self.predict(dummy_input)
-
-    def predict(self, request: PredictionRequest) -> list[float]:
-        """
-        Основний метод для інференсу. Приймає PredictionRequest, повертає список передбачень.
-        """
-        edge_index = torch.tensor(request.edge_index, dtype=torch.long, device=self.device)
-        node_features = torch.tensor(request.node_features, dtype=torch.float, device=self.device)
-
-        if edge_index.shape[0] != 2:
-            edge_index = edge_index.T.contiguous()
-
+        self.device = torch.device(device)
+        self.model = model.to(self.device)
+        # Переводимо модель в режим інференсу (відключає dropout, batchnorm у train-режимі)
         self.model.eval()
+
+    def predict(
+        self,
+        node_features: List[List[float]],
+        edge_index: Optional[List[List[int]]] = None,
+    ) -> List[float]:
+        """
+        Основний метод передбачення.
+
+        :param node_features: список вузлів, кожен вузол - список числових ознак
+                              розмірності [num_nodes][num_features]
+        :param edge_index: список ребер графа у COO-форматі:
+                           [[from_1, from_2, ...], [to_1, to_2, ...]]
+                           Може бути None (для dummy-моделі)
+        :return: список передбачень (по одному числу на кожен вузол)
+        """
+        # Перетворюємо вхід на тензор
+        # Якщо node_features порожній - створюємо тензор з нульовою кількістю вузлів
+        if node_features:
+            x: Tensor = torch.tensor(node_features, dtype=torch.float32, device=self.device)
+        else:
+            x = torch.empty((0, 1), dtype=torch.float32, device=self.device)
+
+        # Edge_index теж перетворюємо на тензор або залишаємо None
+        edge_tensor: Tensor | None
+        if edge_index and len(edge_index) == 2:
+            edge_tensor = torch.tensor(edge_index, dtype=torch.long, device=self.device)
+        else:
+            edge_tensor = None
+
+        # Інференс без градієнтів
         with torch.no_grad():
-            output = self.model(node_features, edge_index)
+            output: Tensor = self.model(x, edge_tensor)
+
+        # сплющити другий параметр
+        if output.dim() == 2 and output.size(-1) == 1:
+            output = output.squeeze(-1)
+
+        if output.dim() == 2 and output.size(0) == 1:
+            output = output.squeeze(0)
 
         return output.detach().cpu().tolist()

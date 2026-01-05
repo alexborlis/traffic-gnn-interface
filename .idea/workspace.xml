@@ -4,18 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="91ed96f6-a6c2-4c33-a7b6-41c85742d699" name="Changes" comment="commit that makes sense">
-      <change afterPath="$PROJECT_DIR$/.python-version" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/requirements-gpu.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/traffic-gnn-interface.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/traffic-gnn-interface.iml" afterDir="false" />
+    <list default="true" id="91ed96f6-a6c2-4c33-a7b6-41c85742d699" name="Changes" comment="моніторинг">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/training_log_metrla_baseline.json" beforeDir="false" afterPath="$PROJECT_DIR$/models/training_log_metrla_baseline.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/send_sample_request.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/send_sample_request.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="EmbeddingIndexingInfo">
+    <option name="cachedIndexableFilesCount" value="67" />
+    <option name="fileBasedEmbeddingIndicesEnabled" value="true" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -25,7 +26,16 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="real_etl" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="McpProjectServerCommands">
+    <commands />
+    <urls />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 1
@@ -38,27 +48,30 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;SHELLCHECK.PATH&quot;: &quot;/Users/alexborlis/Library/Application Support/JetBrains/PyCharm2025.2/plugins/Shell Script/shellcheck&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.MCP Project settings loaded": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "SHELLCHECK.PATH": "/Users/alexborlis/Library/Application Support/JetBrains/PyCharm2025.2/plugins/Shell Script/shellcheck",
+    "ai.playground.ignore.import.keys.banner.in.settings": "true",
+    "git-widget-placeholder": "masters__prod",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-9c94529fcfe0-JavaScript-PY-252.26199.168" />
-        <option value="bundled-python-sdk-b3d66beaba9a-c6efb3732140-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-252.26199.168" />
+        <option value="bundled-js-predefined-d6986cc7102b-9b0f141eb926-JavaScript-PY-253.29346.142" />
+        <option value="bundled-python-sdk-f2b7a9f6281b-6e1f45a539f7-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-253.29346.142" />
       </set>
     </attachedChunks>
   </component>
@@ -72,6 +85,16 @@
       <workItem from="1759678348274" duration="4247000" />
       <workItem from="1759687228525" duration="5311000" />
       <workItem from="1759822661862" duration="142163000" />
+      <workItem from="1761837400267" duration="192000" />
+      <workItem from="1763265880059" duration="55083000" />
+      <workItem from="1763804130833" duration="121646000" />
+      <workItem from="1764788113715" duration="42234000" />
+      <workItem from="1765119279888" duration="138000" />
+      <workItem from="1765119439734" duration="15000" />
+      <workItem from="1765119458303" duration="87000" />
+      <workItem from="1765119571507" duration="94673000" />
+      <workItem from="1765910528205" duration="5739000" />
+      <workItem from="1766585283720" duration="51965000" />
     </task>
     <task id="LOCAL-00001" summary="commit that makes sense">
       <option name="closed" value="true" />
@@ -81,7 +104,127 @@
       <option name="project" value="LOCAL" />
       <updated>1759685952210</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="dummy API test">
+      <option name="closed" value="true" />
+      <created>1764174421121</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1764174421121</updated>
+    </task>
+    <task id="LOCAL-00003" summary="fake dataset trained and evaluated">
+      <option name="closed" value="true" />
+      <created>1764181531981</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1764181531981</updated>
+    </task>
+    <task id="LOCAL-00004" summary="докерабельно">
+      <option name="closed" value="true" />
+      <created>1764183850325</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1764183850325</updated>
+    </task>
+    <task id="LOCAL-00005" summary="модель на реальних даних">
+      <option name="closed" value="true" />
+      <created>1764706083834</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1764706083834</updated>
+    </task>
+    <task id="LOCAL-00006" summary="з діаграмами">
+      <option name="closed" value="true" />
+      <created>1764789876523</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1764789876523</updated>
+    </task>
+    <task id="LOCAL-00007" summary="з діаграмами">
+      <option name="closed" value="true" />
+      <created>1764789905195</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1764789905195</updated>
+    </task>
+    <task id="LOCAL-00008" summary="з діаграмами">
+      <option name="closed" value="true" />
+      <created>1764795226141</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1764795226141</updated>
+    </task>
+    <task id="LOCAL-00009" summary="з діаграмами">
+      <option name="closed" value="true" />
+      <created>1764954382654</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1764954382654</updated>
+    </task>
+    <task id="LOCAL-00010" summary="з діаграмами">
+      <option name="closed" value="true" />
+      <created>1765122941614</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1765122941614</updated>
+    </task>
+    <task id="LOCAL-00011" summary="з діаграмами">
+      <option name="closed" value="true" />
+      <created>1765188194767</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1765188194767</updated>
+    </task>
+    <task id="LOCAL-00012" summary="помилка з подвійною денормалізацією що веде до графіку з абсурдною швидкістю">
+      <option name="closed" value="true" />
+      <created>1765229180945</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1765229180945</updated>
+    </task>
+    <task id="LOCAL-00013" summary="зміна легенди графіка">
+      <option name="closed" value="true" />
+      <created>1765304848780</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1765304848780</updated>
+    </task>
+    <task id="LOCAL-00014" summary="метрики">
+      <option name="closed" value="true" />
+      <created>1765308038797</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1765308038797</updated>
+    </task>
+    <task id="LOCAL-00015" summary="метрики">
+      <option name="closed" value="true" />
+      <created>1765308175390</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1765308175390</updated>
+    </task>
+    <task id="LOCAL-00016" summary="моніторинг">
+      <option name="closed" value="true" />
+      <created>1765311282127</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1765311282127</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -89,6 +232,15 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="commit that makes sense" />
-    <option name="LAST_COMMIT_MESSAGE" value="commit that makes sense" />
+    <MESSAGE value="dummy API test" />
+    <MESSAGE value="fake dataset trained and evaluated" />
+    <MESSAGE value="докерабельно" />
+    <MESSAGE value="модель на реальних даних" />
+    <MESSAGE value="з діаграмами" />
+    <MESSAGE value="помилка з подвійною денормалізацією що веде до графіку з абсурдною швидкістю" />
+    <MESSAGE value="зміна легенди графіка" />
+    <MESSAGE value="метрики" />
+    <MESSAGE value="моніторинг" />
+    <option name="LAST_COMMIT_MESSAGE" value="моніторинг" />
   </component>
 </project>
